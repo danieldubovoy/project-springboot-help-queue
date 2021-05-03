@@ -26,17 +26,21 @@ public class HelpTicket {
     private LocalDateTime timeStamp = LocalDateTime.now();
 
 
-    @Column(nullable=true, name = "status")
+    @Column(name = "status")
     //Ticket Status
-    private Boolean status;
+    private boolean status;
 
     @NotNull
     //Ticket Description
     @Column(name = "description")
     private String description;
 
+    @NotNull
+    @Column(name = "urgency")
+    private String urgency;
 
-    public HelpTicket(Long id, @NotNull String title, @NotNull String author, @NotNull String description,
+
+    public HelpTicket(Long id, @NotNull String title, @NotNull String author, @NotNull String description, @NotNull String urgency,
                       LocalDateTime timeStamp, boolean status) {
         super();
         this.id = id;
@@ -45,6 +49,7 @@ public class HelpTicket {
         this.title = title;
         this.timeStamp = timeStamp;
         this.status = status;
+        this.urgency = urgency;
         this.description = description;
     }
 
@@ -82,6 +87,13 @@ public class HelpTicket {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getUrgency() {
+        return urgency;
+    }
+    public void setUrgency(String urgency) {
+        this.urgency = urgency;
     }
 
     public LocalDateTime getTimeStamp() {
